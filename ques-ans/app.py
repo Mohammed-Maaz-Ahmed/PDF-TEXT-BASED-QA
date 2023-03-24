@@ -1,5 +1,6 @@
 import streamlit as st
 import re
+import pikepdf
 import nltk
 from transformers import pipeline, AutoModelForQuestionAnswering, AutoTokenizer
 import io
@@ -9,12 +10,10 @@ import pdfminer.layout
 from pdfminer.high_level import extract_text_to_fp
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer
-from PIL import Image
-
 
 # Set the page config
 st.set_page_config(
-    page_title="PDF Question Answering System",
+    page_title="PDF AND TEXT BASED Question Answering System",
     page_icon=":books:",
     layout="wide",
     initial_sidebar_state="collapsed"
@@ -66,10 +65,9 @@ with col1:
     st.image("logo.jpg", width=200)
 
 with col2:
-    st.markdown("<h1 style='text-align: center; font-size: 80px;'>PDF BASED QA</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; font-size: 80px;'>PDF AND TEXT BASED QA</h1>", unsafe_allow_html=True)
     st.markdown("<h3 style='text-align: center; margin-top: 10px;'>Welcome to our website! Please watch our video for more information about our PDF-based QA system.</h3>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center;'>Rest assured that any data or PDF files you upload will be kept confidential and not shared with any third parties.</p>", unsafe_allow_html=True)
-
 
 # Display a video file named 'introvideo.mp4'
 video_file = open('intovideo.mp4', 'rb')
@@ -89,41 +87,63 @@ if video_bytes is not None:
     # play the video
     video_placeholder.video(video_bytes)
 
+# Ask user to choose between uploading a PDF file or entering text
+option = st.radio("Select an option:", ("Upload a PDF file", "Enter text"))
 
-st.sidebar.header("Settings")
+# Upload a PDF file
+if option == "Upload a PDF file":
+    with st.expander("Upload a PDF file", expanded=True):
+        file = st.file_uploader("Choose a file", type="pdf")
+        if file is not None:
+            bytes_data = file.read()
+            st.write("File upload complete.")
 
-# Upload a PDF file with a progress bar
-with st.expander("Upload a PDF file", expanded=True):
-    file = st.file_uploader("Choose a file", type="pdf")
+    # Display the PDF file
     if file is not None:
-        bytes_data = file.read()
-        st.write("File upload complete.")
+        st.sidebar.subheader("PDF File")
+        st.sidebar.write(file.name)
+        st.sidebar.write(file.size)
+        st.sidebar.write(file.type)
 
+        text = read_pdf(file)
 
-# Display the PDF file
-if file is not None:
-    st.sidebar.subheader("PDF File")
-    st.sidebar.write(file.name)
-    st.sidebar.write(file.size)
-    st.sidebar.write(file.type)
+        st.subheader("PDF Text")
+        st.write(text)
 
-    text = read_pdf(file)
+# Enter text
+if option == "Enter text":
+    with st.expander("Input Text", expanded=True):
+        text = st.text_area("Enter text here", height=300)
+        if st.button("Submit"):
+            if len(text) > 0:
+                st.write(text)
+            st.write("Text input complete.")  
 
-    st.subheader("PDF Text")
-    st.write(text)
 
 # Ask a question
 question = st.text_input("Ask a question")
+question_button = st.button("Generate Answer")
 
 
 
 # Display the answer to the question with a loading spinner
-if file is not None and question != "":
+if (option == "Upload a PDF file" and file is not None) or (option == "Enter text" and len(text) > 0) and len(question) > 0:
     with st.spinner("Generating answer..."):
-        text = read_pdf(io.BytesIO(bytes_data))
-        text = preprocess_text(text)
+        if option == "Upload a PDF file":
+            text = read_pdf(file)
+        else:
+            text = preprocess_text(text)
         question = preprocess_question(question)
-        result = qa_pipeline(question=question, context=text)
-        answer = result["answer"]
+        if len(question) > 0:
+            result = qa_pipeline(question=question, context=text)
+            answer = result["answer"]
+            confidence = result["score"]
+            if confidence < 0.01:
+                answer = "Sorry, the question is out of context."
+        else:
+            answer = ""
     st.subheader("Answer")
-    st.write(f"The answer is: {answer}")
+    if len(answer) > 0:
+        st.write(f"The answer is: {answer}")
+
+st.write("*******Developed by Mohammed Maaz Ahmed, Data Scientist at SoothSayer Analytics*******")
