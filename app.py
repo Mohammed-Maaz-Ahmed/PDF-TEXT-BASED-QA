@@ -53,13 +53,14 @@ def preprocess_question(question):
     question = question.lower()
 
     return question
+git clone https://huggingface.co/MohammedMaaz/fine-tuned-distilbert-base-uncased-distilled-squad.git
 
 def load_model():
     # Load the pre-trained model
     #model_path = "https://we.tl/t-aJ5yogyIIn"
     #tokenizer_path = "https://we.tl/t-nvL6KW8qDx"
-    tokenizer = AutoTokenizer.from_pretrained('distilbert-base-uncased-distilled-squad')
-    model = AutoModelForQuestionAnswering.from_pretrained('distilbert-base-uncased-distilled-squad')
+    tokenizer = AutoTokenizer.from_pretrained("fine-tuned-distilbert-base-uncased-distilled-squad/saved_tokenizer")
+    model = AutoModelForQuestionAnswering.from_pretrained("fine-tuned-distilbert-base-uncased-distilled-squad/saved_model")
     qa_pipeline = pipeline('question-answering', model=model, tokenizer=tokenizer)
     #tokenizer = AutoTokenizer.from_pretrained(tokenizer_path, use_fast=True)
     #model = AutoModelForQuestionAnswering.from_pretrained(model_path)
