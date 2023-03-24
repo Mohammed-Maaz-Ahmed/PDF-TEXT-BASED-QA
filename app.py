@@ -56,11 +56,13 @@ def preprocess_question(question):
 
 def load_model():
     # Load the pre-trained model
-    model_path = "https://we.tl/t-aJ5yogyIIn"
-    tokenizer_path = "https://we.tl/t-nvL6KW8qDx"
-    tokenizer = AutoTokenizer.from_pretrained(tokenizer_path, use_fast=True)
-    model = AutoModelForQuestionAnswering.from_pretrained(model_path)
-    qa_pipeline = pipeline("question-answering", model=model, tokenizer=tokenizer)
+    #model_path = "https://we.tl/t-aJ5yogyIIn"
+    #tokenizer_path = "https://we.tl/t-nvL6KW8qDx"
+    tokenizer = AutoTokenizer.from_pretrained('distilbert-base-uncased-distilled-squad')
+    model = AutoModelForQuestionAnswering.from_pretrained('distilbert-base-uncased-distilled-squad')
+    qa_pipeline = pipeline('question-answering', model=model, tokenizer=tokenizer)
+    #tokenizer = AutoTokenizer.from_pretrained(tokenizer_path, use_fast=True)
+    #model = AutoModelForQuestionAnswering.from_pretrained(model_path)
     return qa_pipeline
 
 
