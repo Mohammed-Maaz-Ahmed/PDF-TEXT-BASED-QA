@@ -58,7 +58,7 @@ def load_model():
     # Load the pre-trained model
     #model_path = "https://we.tl/t-aJ5yogyIIn"
     #tokenizer_path = "https://we.tl/t-nvL6KW8qDx"
-    tokenizer = AutoTokenizer.from_pretrained("saved_tokrnizer")
+    tokenizer = AutoTokenizer.from_pretrained("https://github.dev/Mohammed-Maaz-Ahmed/PDF-TEXT-BASED-QA/blob/18a6572ac29f88496d1cd53ee4d5ddc7828dc05b/saved_tokenizer")
     model = AutoModelForQuestionAnswering.from_pretrained("https://github.dev/Mohammed-Maaz-Ahmed/PDF-TEXT-BASED-QA/blob/6c7f481c8dfa089750067d38a9737da98da023b5/ques-ans/saved_model")
     qa_pipeline = pipeline('question-answering', model=model, tokenizer=tokenizer)
     #tokenizer = AutoTokenizer.from_pretrained(tokenizer_path, use_fast=True)
