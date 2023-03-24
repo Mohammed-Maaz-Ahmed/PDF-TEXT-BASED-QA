@@ -10,7 +10,7 @@ from pdfminer.high_level import extract_text_to_fp
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer
 from PIL import Image
-pip install pikepdf
+
 
 # Set the page config
 st.set_page_config(
