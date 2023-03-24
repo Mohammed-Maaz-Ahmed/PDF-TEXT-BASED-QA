@@ -53,7 +53,6 @@ def preprocess_question(question):
     question = question.lower()
 
     return question
-git clone https://huggingface.co/MohammedMaaz/fine-tuned-distilbert-base-uncased-distilled-squad.git
 
 def load_model():
     # Load the pre-trained model
