@@ -50,8 +50,8 @@ def preprocess_question(question):
 
 def load_model():
     # Load the pre-trained model
-    model_path = "Mohammed-Maaz-Ahmed/PDF-TEXT-BASED-QA/ques-ans/saved_model"
-    tokenizer_path = "Mohammed-Maaz-Ahmed/PDF-TEXT-BASED-QA/ques-ans/saved_tokenizer"
+    model_path = "saved_model"
+    tokenizer_path = "saved_tokenizer"
     tokenizer = AutoTokenizer.from_pretrained(tokenizer_path, use_fast=True)
     model = AutoModelForQuestionAnswering.from_pretrained(model_path)
     qa_pipeline = pipeline("question-answering", model=model, tokenizer=tokenizer)
