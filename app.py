@@ -76,7 +76,7 @@ with col1:
 
 with col2:
     st.markdown("<h1 style='text-align: center; font-size: 80px;'>PDF AND TEXT BASED QA</h1>", unsafe_allow_html=True)
-    st.markdown("<h3 style='text-align: center; margin-top: 10px;'>Welcome to our website! Please watch our video for more information about our PDF-based QA system.</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center; margin-top: 10px;'>Welcome to our website! Please watch our video for more information about our PDF TEXT based QA system.</h3>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center;'>Rest assured that any data or PDF files you upload will be kept confidential and not shared with any third parties.</p>", unsafe_allow_html=True)
 
 # Display a video file named 'introvideo.mp4'
