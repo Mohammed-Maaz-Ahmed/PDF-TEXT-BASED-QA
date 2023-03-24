@@ -59,7 +59,7 @@ def load_model():
     #model_path = "https://we.tl/t-aJ5yogyIIn"
     #tokenizer_path = "https://we.tl/t-nvL6KW8qDx"
     tokenizer = AutoTokenizer.from_pretrained("saved_tokrnizer")
-    model = AutoModelForQuestionAnswering.from_pretrained("https://github.dev/Mohammed-Maaz-Ahmed/PDF-TEXT-BASED-QA/blob/6c7f481c8dfa089750067d38a9737da98da023b5/ques-ans/saved_model"
+    model = AutoModelForQuestionAnswering.from_pretrained("https://github.dev/Mohammed-Maaz-Ahmed/PDF-TEXT-BASED-QA/blob/6c7f481c8dfa089750067d38a9737da98da023b5/ques-ans/saved_model")
     qa_pipeline = pipeline('question-answering', model=model, tokenizer=tokenizer)
     #tokenizer = AutoTokenizer.from_pretrained(tokenizer_path, use_fast=True)
     #model = AutoModelForQuestionAnswering.from_pretrained(model_path)
@@ -67,6 +67,7 @@ def load_model():
 
 
 qa_pipeline = load_model()
+
 
 # Set the logo and title
 col1, col2 = st.columns([3, 29])
