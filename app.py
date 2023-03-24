@@ -56,8 +56,8 @@ def preprocess_question(question):
 
 def load_model():
     # Load the pre-trained model
-    model_path = "https://drive.google.com/drive/folders/1k0Dwg4R4J3pBdfZb2L_wlyuJqm92-RwQ?usp=sharing"
-    tokenizer_path = "https://drive.google.com/drive/folders/1r_BMfT6EHZ4k5JTwzg2lJxCheHypfemi?usp=sharing"
+    model_path = "https://we.tl/t-aJ5yogyIIn"
+    tokenizer_path = "https://we.tl/t-nvL6KW8qDx"
     tokenizer = AutoTokenizer.from_pretrained(tokenizer_path, use_fast=True)
     model = AutoModelForQuestionAnswering.from_pretrained(model_path)
     qa_pipeline = pipeline("question-answering", model=model, tokenizer=tokenizer)
