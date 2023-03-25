@@ -125,25 +125,24 @@ question = st.text_input("Ask a question")
 question_button = st.button("Generate Answer")
 
 
-
-# Display the answer to the question with a loading spinner
-if (option == "Upload a PDF file" and file is not None) or (option == "Enter text" and len(text) > 0) and len(question) > 0:
-    with st.spinner("Generating answer..."):
-        if option == "Upload a PDF file":
-            text = read_pdf(file)
-        else:
-            text = preprocess_text(text)
-        question = preprocess_question(question)
-        if len(question) > 0:
-            result = qa_pipeline(question=question, context=text)
-            answer = result["answer"]
-            confidence = result["score"]
-            if confidence < 0.01:
-                answer = "Sorry, the question is out of context."
-        else:
-            answer = ""
-    st.subheader("Answer")
-    if len(answer) > 0:
-        st.write(f"The answer is: {answer}")
-
-st.write("*******Developed by Mohammed Maaz Ahmed, Data Scientist at SoothSayer Analytics*******")
+if question_button:
+    # Display the answer to the question with a loading spinner
+    if (option == "Upload a PDF file" and file is not None) or (option == "Enter text" and len(text) > 0) and len(question) > 0:
+        with st.spinner("Generating answer..."):
+            if option == "Upload a PDF file":
+                text = read_pdf(file)
+            else:
+                text = preprocess_text(text)
+            question = preprocess_question(question)
+            if len(question) > 0:
+                result = qa_pipeline(question=question, context=text)
+                answer = result["answer"]
+                confidence = result["score"]
+                if confidence < 0.01:
+                    answer = "Sorry, the question is out of context."
+                    
+            else:
+                answer = ""
+        st.subheader("Answer")
+        if len(answer) > 0:
+            st.write(f"The answer is: {answer}")
