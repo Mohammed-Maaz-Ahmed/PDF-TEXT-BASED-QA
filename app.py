@@ -152,7 +152,6 @@ if question_button:
         st.subheader("Answer")
         if len(answer) > 0:
             st.write(f"The answer is: {answer}")
-            st.write(f"Confidence score: {confidence}")
     
     # Reset confidence score if option changed
     if st.session_state.option != option:
