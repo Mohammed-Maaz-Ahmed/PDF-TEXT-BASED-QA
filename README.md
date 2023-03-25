@@ -5,5 +5,6 @@ model is fine tuned on squad dataset considering only 5000 examples and dividing
 
 TO RUN THIS DEPLOYMENT FILE : save the file in .py fomat and run in cmd go to path where you have saved the file and type python app.py you will then have to type streamlit run app.py and it will direct your browswer to the webpage 
 
+NOTE:- The fine tuning is present in the main branch and the application app.py and its requirements.txt and adiitional files such as lodo and intoduction video are preesent and model and tokenizer files which are fine tuned are present
 
 happy coding!!
