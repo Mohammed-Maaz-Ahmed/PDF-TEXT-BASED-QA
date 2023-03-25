@@ -11,6 +11,6 @@ I have deployed this model on Streamlit cloud :-(https://mohammed-maaz-ahmed-pdf
 I have also deployed on Hugging face Spaces:-(https://huggingface.co/spaces/MohammedMaaz/PDF-TEXT-BASED-QA) 
 
 
-happy coding!!
+happy coding!!!
 
 
