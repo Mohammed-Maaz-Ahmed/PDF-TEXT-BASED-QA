@@ -136,6 +136,7 @@ if question_button:
         with st.spinner("Generating answer..."):
             if option == "Upload a PDF file":
                 text = read_pdf(file)
+                text = preprocess_text(text)
             else:
                 text = preprocess_text(text)
             question = preprocess_question(question)
