@@ -7,8 +7,8 @@ TO RUN THIS DEPLOYMENT FILE : save the file in .py fomat and run in cmd go to pa
 
 NOTE:- The fine tuning is present in the main branch and the application app.py and its requirements.txt and adiitional files such as logo and intoduction video are present and model and tokenizer files which are fine tuned are present in the feature-branchs
 
-I have deployed this model on Streamlit cloud :-(https://mohammed-maaz-ahmed-pdf-text-based-qa-app-feature-branch-c7xmi0.streamlit.app/)
-I have also deployed on Hugging face Spaces:-(https://huggingface.co/spaces/MohammedMaaz/PDF-TEXT-BASED-QA) 
+
+I have deployed on Hugging face Spaces:-(https://huggingface.co/spaces/MohammedMaaz/PDF-TEXT-BASED-QA) 
 
 
 happy coding!!!
