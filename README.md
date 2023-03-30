@@ -1,4 +1,4 @@
-# PDF-TEXT-BASED-QA (https://mohammed-maaz-ahmed-pdf-text-based-qa-app-feature-branch-c7xmi0.streamlit.app/)  (https://huggingface.co/spaces/MohammedMaaz/PDF-TEXT-BASED-QA) 
+# PDF-TEXT-BASED-QA  (https://huggingface.co/spaces/MohammedMaaz/PDF-TEXT-BASED-QA) 
 This is a PDF and text-based question-answering system implemented using the Streamlit framework. The code allows users to upload a PDF file or enter text, then ask a question related to the content in the uploaded PDF file or entered text. 
 
 model is fine tuned on squad dataset considering only 5000 examples and dividing them as 80 percent and 20 percent and freezing the base layer and saving the files of model and tokenizer in the local system and using them in the stramlit to deploy 
